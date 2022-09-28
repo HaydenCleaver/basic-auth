@@ -10,7 +10,6 @@ async function basicAuth(req, res, next) {
   let encodedString = basicHeaderParts.pop();  // sdkjdsljd=
   let decodedString = base64.decode(encodedString); // "username:password"
   let [username, password] = decodedString.split(':'); // username, password
-    console.log(decodedString);
   /*
     Now that we finally have username and password, let's see if it's valid
     1. Find the user in the database by username
@@ -19,9 +18,8 @@ async function basicAuth(req, res, next) {
     3. Either we're valid or we throw an error
   */
   try {
-    const user = await UsersModel.findOne({ where: { username} });
+    const user = await UsersModel.findOne({ where: { username } });
     const valid = await bcrypt.compare(password, user.password);
-    console.log(password, user.password);
     if (valid) {
       res.status(200).json(user);
     }
