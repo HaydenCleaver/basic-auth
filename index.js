@@ -1,8 +1,9 @@
 'use strict';
 
-let { start, sequelize} = require('./src/server');
+let { start } = require('./src/server');
+let { sequelizeDatabase } = require('./src/auth/models/users-model');
 
-sequelize.sync()
+sequelizeDatabase.sync()
   .then(() => {
     console.log('successful connection');
     start();
