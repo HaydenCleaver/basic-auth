@@ -9,8 +9,8 @@
 #### Running the App
 
 - Endpoints:
-  - `\signup`
-  - `\signin`
+  - `/signup`
+  - `/signin`
 
 #### Tests
 
